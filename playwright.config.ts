@@ -31,7 +31,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     launchOptions: {
       args: ["--start-maximized", "--disable-extensions", "--disable-plugins"],
-      headless: false,
+      headless: true,
       timeout: Number.parseInt(process.env.BROWSER_LAUNCH_TIMEOUT, 10),
       slowMo: 100,
       downloadsPath: "./test-results/downloads",
