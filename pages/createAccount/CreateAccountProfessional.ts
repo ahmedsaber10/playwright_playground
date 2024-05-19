@@ -1,4 +1,4 @@
-import { type Page, Locator, expect } from '@playwright/test';
+import test, { type Page, Locator, expect } from '@playwright/test';
 import { CreateAccount } from './CreateAccount';
 
 export class CreateAccountProfessional extends CreateAccount {
@@ -17,12 +17,17 @@ export class CreateAccountProfessional extends CreateAccount {
   
     async createAccountForProfessionalHealthCare() {
      // should add step here to choose account type
-      await this.createAccount();
+     await test.step('user choose to create professional healthcare account ', async () => {
+     await this.createAccount();
+    }, { box: true });
     }
 
     async fillcreateAccountForm(email?: string, firstNameText? : string,
        lastNameText?:string, emailConfirmation? : string,terms? : boolean,communication? : boolean )
     {
+      await test.step('user fill create account form with email :'+email+' ,first name : '+firstNameText
+      +' , last name : '+lastNameText+' ,email confirmation : '+emailConfirmation+' , terms : '+terms+' and communication : '+communication, async () => {
+
       this.emailAddress= await this.page.locator('#mat-input-4');
       this.emailAddressConfirmation= await this.page.locator('#mat-input-5');
       this.firstName= await this.page.getByPlaceholder('First name');
@@ -37,18 +42,23 @@ export class CreateAccountProfessional extends CreateAccount {
        (emailConfirmation != null) ? await this.emailAddressConfirmation.fill(emailConfirmation) : await this.emailAddressConfirmation.clear();;
        (terms != null && terms)  ?  await this.termsConditions.check(): await this.termsConditions.uncheck() ;
        (communication != null && communication) ?  await this.communicationAgreement.check(): await this.communicationAgreement.uncheck();
-     
+      }, { box: true });
     }
     async proceedNextVerification()
     {
+      await test.step('user proceed to email verification step ', async () => {
+
       this.nextVerification= await this.page.getByRole('button', { name: 'Next: verification' });
       await this.nextVerification.click();
+    }, { box: true });
     }
 
     async isNextVerification(enabled:boolean)
     {
+      await test.step('Check if the Next: verification is enabled/dimmed -> enabled:  '+enabled, async () => {
+
       this.nextVerification= await this.page.getByRole('button', { name: 'Next: verification' });
       enabled ? await expect( await this.nextVerification).toBeEnabled() : await expect( await this.nextVerification).toBeDisabled();
-     
+    }, { box: true });
     }
 }
