@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
     email ='test+'+new Date().getTime()+'@gmail.com';
 });
 
-test.only('TC_001 Verify that user can create an account as Professional health care.', async ({ page }) => {
+test('TC_001 Verify that user can create an account as Professional health care.', async ({ page }) => {
  
   // email ='test+'+new Date().getTime()+'@gmail.com';
   await homePage.createAccount();
@@ -26,7 +26,7 @@ test.only('TC_001 Verify that user can create an account as Professional health 
 
 });
 
-test.only('TC_002 Verify that user cant create an account as Professional health care when missing any mandoatory fields.', async ({ page }) => {
+test('TC_002 Verify that user cant create an account as Professional health care when missing any mandoatory fields.', async ({ page }) => {
   // email ='test+'+new Date().getTime()+'@gmail.com';
 
   await homePage.createAccount();
