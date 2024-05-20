@@ -6,8 +6,6 @@ UI automated UI tests using playwright over ts.
 - Installation 
 - Usage 
 - Configuration
-- Contributing
-- License
 
 ## Installation
 1. Clone this repository.
@@ -16,7 +14,7 @@ UI automated UI tests using playwright over ts.
 ## Usage
 1. Customize the configuration files (if needed).
 2. Write your Playwright tests in TypeScript.
-3. Run tests using `npx playwright test tests/test-1.spec.ts --headed
+3. Run tests using `**npx playwright test tests/test-1.spec.ts --headed**'
 
 `.
 
